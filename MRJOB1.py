@@ -12,14 +12,17 @@ class RatingBreakDown(MRJob):
          MRStep(mapper = mapper_get_rating,
                 reducer = reducer_count_ratings)
         ]
+    
     def mapper_get_rating(self, _, line):
         (userID, movieID, rating, timestamp) = line.split('\t')
         yield rating, 1
+        
     def reducer_count_ratings(self, key, values):
         yield key, sum(values)
 
+if _name_ == '_main_':
+    RatingBreakDown.run()
 
-# In[ ]:
 
 
 
