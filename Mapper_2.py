@@ -1,5 +1,3 @@
-#!/usr/bin/python
-# --*-- coding:utf-8 --*--
 import re
 import sys
 
@@ -12,6 +10,5 @@ for line in sys.stdin:
         para_2 = temp.group('para2')
     else:
         match = pat.search(line)
-        if match:
-            if match.group('hour') in list(range(int(para_1), int(para_2)+1)):
-                print '%s\t%s' % (match.group('ip'), 1)
+        if match and (int(match.group('hour')) in list(range(int(para_1), int(para_2)+1))):
+                print (match.group('ip'), 1)
