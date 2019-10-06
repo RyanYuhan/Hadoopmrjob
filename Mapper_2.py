@@ -12,7 +12,6 @@ for line in sin:
     if temp:
         para_1 = int(temp.group('para1'))
         para_2 = int(temp.group('para2'))
-    else:
-        match = pat.search(line)
-        if match and int(match.group('hour')) >= int(para_1) and int(match.group('hour')) <= int(para_2):
-            print '%s\t%s' % (match.group('ip'), 1)
+    match = pat.search(line)
+    if match and int(match.group('hour')) >= int(para_1) and int(match.group('hour')) <= int(para_2):
+        print '%s\t%s' % (match.group('ip'), 1)
