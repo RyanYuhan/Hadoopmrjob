@@ -5,10 +5,8 @@ bash /mapreduce-test/start.sh
 /usr/local/hadoop/bin/hdfs dfs -mkdir -p /lab_1/input/
 cp /mapreduce-test/mapreduce-test-data/access.log /mapreduce-test/mapreduce-test-data/access_tem.log
 echo -n "Please enter the start time"
-echo -n ""
 read start_time
 echo -n "Please enter the end time"
-echo -n ""
 read end_time
 sed -i "1i @@$start_time-$end_time@@" /mapreduce-test/mapreduce-test-data/access_tem.log
 /usr/local/hadoop/bin/hdfs dfs -copyFromLocal /mapreduce-test/mapreduce-test-data/access_tem.log /lab_1/input/
