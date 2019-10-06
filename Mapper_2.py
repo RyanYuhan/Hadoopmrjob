@@ -13,4 +13,4 @@ for line in sys.stdin:
     else:
         match = pat.search(line)
         if match and int(match.group('hour')) >= int(para_1) and int(match.group('hour')) <= int(para_2):
-            print '%s\t%s' % (match.group('ip'), 1)
+            print ('%s\t%s' % (match.group('ip'), 1))
