@@ -1,21 +1,23 @@
 #!/usr/bin/python
-from operator import itemgetter
+
 from collections import defaultdict
+from operator import itemgetter
 import sys
-
-dict_ip_count = defaultdict(int)
-
+current_hour = None
+ipcountdict = defaultdict(int)
 for line in sys.stdin:
-    line = line.strip()
-    ip, num = line.split('\t')
-    try:
-        num = int(num)
-        dict_ip_count[ip] = dict_ip_count[ip] + num
+    hour, ip = line.split('\t')
+    if current_hour == hour:
+        ipcountdict[ip]+=1
+    else:
+        sorted_dict_ip_count = sorted(ipcountdict.items(), key=itemgetter(1), reverse = True)
+        for ip, count in sorted_dict_ip_count[:3]:
+            print ('%s\t%s\t%s' % (current_hour, ip, count))
+        current_hour = hour
+        ipcountdict.clear()
 
-    except ValueError:
-        pass
 
-
-sorted_dict_ip_count = sorted(dict_ip_count.items(), key=itemgetter(1), reverse = True)
-for ip, count in sorted_dict_ip_count[:3]:
-    print ('%s\t%s' % (ip, count))
+if current_hour == hour:
+    sorted_dict_ip_count = sorted(ipcountdict.items(), key=itemgetter(1), reverse = True)
+    for ip, count in sorted_dict_ip_count[:3]:
+        print ('%s\t%s\t%s' % (current_hour, ip, count))
