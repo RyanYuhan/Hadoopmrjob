@@ -9,4 +9,4 @@ pat = re.compile(sys.argv[1])
 for line in sys.stdin:
     match = pat.search(line)
     if match:
-        print '%s\t%s' % ("input", 1)
+        print '%s\t%s' % (sys.argv[1], 1)
