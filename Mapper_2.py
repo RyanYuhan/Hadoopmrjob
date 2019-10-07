@@ -1,5 +1,4 @@
 #!/usr/bin/python
-
 import re
 import sys
 
@@ -13,6 +12,6 @@ for line in sys.stdin:
             para_2 = int(temp.group('para2'))
         match = pat.search(line)
         if match and int(match.group('hour')) >= int(para_1) and int(match.group('hour')) <= int(para_2):
-            print '%s\t%s' % (match.group('ip'), 1)
+            print '%s\t%s' % (match.group('hour', match.group('ip'))
     except:
         pass
