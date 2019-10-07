@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from operator import itemgetter
 import sys
 
@@ -7,7 +8,7 @@ word = None
 
 for line in sys.stdin:
     line = line.strip()
-    word, count = line.split('\t')
+    word, count = line.split('\t', 1)
     try:
         count = int(count)
     except ValueError:
