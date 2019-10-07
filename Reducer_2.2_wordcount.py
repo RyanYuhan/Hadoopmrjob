@@ -7,7 +7,7 @@ word = None
 
 for line in sys.stdin:
     line = line.strip()
-    word, count = line.split('\t', 1)
+    word, count = line.split('\t')
     try:
         count = int(count)
     except ValueError:
