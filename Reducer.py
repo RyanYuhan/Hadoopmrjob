@@ -11,13 +11,17 @@ for line in sys.stdin:
         ipcountdict[ip]+=1
     else:
         sorted_dict_ip_count = sorted(ipcountdict.items(), key=itemgetter(1), reverse = True)
+        print ('--------------------')
+        print ('The Top 3 IP in '+str(current_hour)+' is')
         for ip, count in sorted_dict_ip_count[:3]:
-            print ('%s\t%s\t%s' % (current_hour, ip, count))
+            print ('%s\t%s' % (ip, count))
         current_hour = hour
         ipcountdict.clear()
 
 
 if current_hour == hour:
     sorted_dict_ip_count = sorted(ipcountdict.items(), key=itemgetter(1), reverse = True)
+    print ('--------------------')
+    print ('The Top 3 IP in '+str(current_hour)+' is')
     for ip, count in sorted_dict_ip_count[:3]:
-        print ('%s\t%s\t%s' % (current_hour, ip, count))
+        print ('%s\t%s' % (ip, count))
