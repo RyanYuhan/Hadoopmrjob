@@ -16,4 +16,4 @@ for line in sys.stdin:
 
 sorted_dict_word_count = sorted(dict_word_count.items(), key=itemgetter(0))
 for word, count in sorted_dict_word_count:
-    print '%s\t%s' % (word, count)
+    print '%s\t%s' % (sys.argv[1], count)
